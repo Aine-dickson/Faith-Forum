@@ -1,15 +1,12 @@
 <template>
-    <div ref="app_cont" class="app-container grid h-screen bg-slate-100 dark:bg-gray-800">
+    <div class="app-container grid h-screen bg-slate-100 dark:bg-gray-900 dark:text-white">
         <header class="app-header h-full">
             <app_header/>
         </header>
-        <nav @mouseenter="navManager(true)" @mouseleave="navManager(false)" class="lg_app-nav h-full hidden sm:block overflow-hidden">
-            <lg_aside :navSize="nav_size"/>
+        <nav class="lg_app-nav h-full hidden py-2 pl-1 sm:block overflow-hidden">
+            <lg_aside/>
         </nav>
-        <nav class="sm_app-nav h-full hidden">
-            Small aside nav
-        </nav>
-        <main class="app-main h-full bg-slate-50 p-4 dark:bg-gray-900">
+        <main class="app-main h-full bg-slate-50 py-2 pl-2 dark:bg-gray-900">
             <app_main/>
         </main>
         <footer class="app-footer h-full sm:hidden">
@@ -19,7 +16,6 @@
 </template>
 
 <script>
-    import { ref } from 'vue';
 
     import lg_aside from './includes/lg_side_nav.vue';
     import app_header from './includes/app_header.vue';
@@ -34,21 +30,8 @@
             app_footer
         },
         setup(){
-            const app_cont = ref('')
-            const nav_size = ref('small')
-
-            // Function to manage hover effect on the side nav
-            const navManager = (state) => {
-                if(state){
-                    app_cont.value.style.gridTemplateColumns = "23% 77%"
-                    nav_size.value = 'large'
-                } else {
-                    app_cont.value.style.gridTemplateColumns = "5% 95%"
-                    nav_size.value = 'small'
-                }
-            }
-
-            return {app_cont, navManager, nav_size}
+            
+            return {  }
         }
     }
 </script>
@@ -63,7 +46,7 @@
     @media screen and (min-width: 639px) {
         .app-container {
             display: grid;
-            grid-template-columns: 5% 95%;
+            grid-template-columns: 20% 80%;
             grid-template-rows: 10% 90%;
             grid-template-areas: "header header" "lg_aside main";
         }
